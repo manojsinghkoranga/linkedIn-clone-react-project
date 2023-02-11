@@ -40,6 +40,19 @@ const Post = (props) => {
     updatePost(id, {body, imageUrl, createdBy, likes: likeCount, comments: commentsCounter});
   }, [likeCount, commentsCounter])
 
+  const handleLike = () => {
+    if(likeCount.includes(auth.userId)){
+      const newLikeCount = likeCount.filter((element) => {
+        return element !== auth.userId;
+      })
+
+      setLikeCount(newLikeCount);
+      return;
+    }
+
+    setLikeCount([...likeCount, auth.userId]);
+  }
+
   const addCommentOnPost = () => {
     setCommentsCounter([...commentsCounter, {name: userInfo.firstName, body: postComment}]);
     setPostComment('');
@@ -70,7 +83,7 @@ const Post = (props) => {
       )}
       <SocialCounter>
         <LikesCounter>
-          <button onClick={() => setLikeCount(likeCount + 1)}> <ThumbUpAltOutlinedIcon /> {likeCount} likes</button>
+          <button onClick={handleLike}> <ThumbUpAltOutlinedIcon /> {likeCount.length} likes</button>
         </LikesCounter>
         <CommentsCounter>
           <button onClick={() => setOpenComments(!openComments)}><InsertCommentOutlinedIcon /> {commentsCounter.length} comments</button>

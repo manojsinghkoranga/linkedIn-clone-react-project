@@ -27,7 +27,7 @@ export const deletePostAsync = (id) => async (dispatch) => {
 
 export const createPostAsync =
   (postDescription, imageUrl, userId) => async (dispatch) => {
-    const likes = 0;
+    const likes = [];
     const comments = [];
     await addPost(postDescription, imageUrl, userId, likes, comments);
     dispatch(fetchPostsAsync);
