@@ -98,6 +98,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 1px solid lightgray;
+  border-radius: 10px;
 
   &>div{
     margin-top: 10px;
@@ -108,7 +110,7 @@ const Container = styled.div`
       margin-left: 15px;
       margin-right: 15px;
       height: 50px;
-      width: 400px;
+      width: 350px;
       background-color: rgba(230, 230, 230, 0.8);
       border: none;
       border-radius: 15px;

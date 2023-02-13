@@ -6,6 +6,7 @@ const Center = () => {
     return (
         <Container>
             <CreatePost />
+            <Line />
             <Posts />
         </Container>
     )
@@ -14,9 +15,14 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
 
-    max-width: 600px;
+    max-width: 550px;
     position: relative;
     row-gap: 15px;
     
+`;
+
+const Line = styled.hr`
+    border: 1px solid rgb(144, 140, 140);
+    width: 100%;
 `;
 export default Center;

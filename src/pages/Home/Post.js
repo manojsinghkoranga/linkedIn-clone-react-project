@@ -109,8 +109,7 @@ const PostContainer = styled.div`
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  /* margin-left: -50px; */
-  width: 600px;
+  width: 550px;
   height: auto;
   display: flex;
   flex-direction: column;
