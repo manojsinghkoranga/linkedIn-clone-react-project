@@ -28,11 +28,11 @@ const PostsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  row-gap: 15px;
 `;
 
 const PostDiv = styled.div`
-  width: 500px;
+  
 `;
 
 export default Posts;

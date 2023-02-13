@@ -13,15 +13,10 @@ const Center = () => {
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    margin-left: 100px;
-    /* align-items: center; */
-    /* justify-content: center; */
-    grid-area: center;
-    max-width: 400px;
+
+    max-width: 600px;
     position: relative;
-    @media (max-width: 1000px){
-        max-width: 400px;
-    }
+    row-gap: 15px;
     
 `;
 export default Center;

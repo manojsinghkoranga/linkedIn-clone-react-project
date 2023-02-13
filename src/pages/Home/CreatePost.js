@@ -58,7 +58,7 @@ const CreatePost = (props) => {
           sx={{ width: 48, height: 48, mt: 1 }}
         />
         <input
-          placeholder="Say something"
+          placeholder="Start a post..."
           value={postInputValue}
           onChange={(event) => setPostInputValue(event.target.value)}
         />
@@ -70,7 +70,7 @@ const CreatePost = (props) => {
         {uploadPhoto && <input type={'file'}  onChange={event => userPostFile.current = event.target.files[0]}/>}
       </FileInputBox>
       <IconContainer >
-        <button onClick={() => setUploadPhoto(true)}>
+        <button onClick={() => setUploadPhoto(!uploadPhoto)}>
             <InsertPhotoIcon color="primary"/>
             Photo
         </button>
@@ -93,7 +93,6 @@ const CreatePost = (props) => {
 
 const Container = styled.div`
   width: 100%;
-  margin-bottom: 15px;
   background-color: rgb(250, 250, 250);
   display: flex;
   flex-direction: column;
@@ -101,16 +100,20 @@ const Container = styled.div`
   justify-content: center;
 
   &>div{
-    width: 100%;
     margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     &>input{
-      height: 30px;
-      width: 200px;
+      margin-left: 15px;
+      margin-right: 15px;
+      height: 50px;
+      width: 400px;
       background-color: rgba(230, 230, 230, 0.8);
       border: none;
+      border-radius: 15px;
+      border: 1px solid black;
+      font-size: medium;
     }
     &>img{
       height: 40px;
@@ -120,7 +123,7 @@ const Container = styled.div`
 `;
 
 const FileInputBox = styled.div`
-  
+  margin-right: 20px;
 `;
 
 const IconContainer = styled.div`
@@ -136,6 +139,7 @@ const IconContainer = styled.div`
     align-items: center;
     background-color: transparent;
     justify-content: center;
+    font-size: medium;
     &:hover{
       opacity: 0.9;
     }

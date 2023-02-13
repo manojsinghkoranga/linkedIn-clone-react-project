@@ -109,8 +109,8 @@ const PostContainer = styled.div`
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  margin-left: -50px;
-  width: 400px;
+  /* margin-left: -50px; */
+  width: 600px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -155,10 +155,11 @@ const DeleteText = styled.p`
   top: 20px;
   right: -5px;
   margin: 0px;
-  background-color: gray;
-  color: red;
+  background-color: red;
+  color: white;
   padding: 5px;
   display: none;
+  border-radius: 8px;
 `;
 
 const ButtonContainer = styled.div`

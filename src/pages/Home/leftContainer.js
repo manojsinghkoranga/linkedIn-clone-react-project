@@ -24,18 +24,26 @@ const Leftside = (props) => {
                         <AddPhotoText>Add a photo</AddPhotoText>
                     </a>
                 </UserInfo>
+                <Line />
                 <Widget>
                     <a>
                         <div>
                             <span>Connections</span>
                             <span>Grow your network</span>
                         </div>
-                        <img src="/images/widget-icon.svg" alt="" />
+                        <p>115</p>
+                    </a>
+                    <a>
+                        <div>
+                            <span>Invitation</span>
+                        </div>
+                        <p>18</p>
                     </a>
                 </Widget>
+                <Line />
                 <Item>
+                    <img src="/images/item-icon.svg" alt="" />
                     <span>
-                        <img src="/images/item-icon.svg" alt="" />
                         My Items
                     </span>
                 </Item>
@@ -47,167 +55,132 @@ const Leftside = (props) => {
                 <a>
                     <span>
                         Events
-                        <img src="/Images/plus-icon.svg" alt="" />
                     </span>
+                    <img src="/Images/plus-icon.svg" alt="" />
                 </a>
                 <a>
                     <span>Follow Hashtags</span>
                 </a>
-                <a>
+                <Line />
+                <div>
                     <span>Discover More</span>
-                </a>
+                </div>
             </CommunityCard>
         </Container>
     )
 }
 
 const Container = styled.div`
-    grid-area: leftside;
-    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    width: 250px;
 `;
 
 const ArtCard = styled.div`
-    text-align: center;
+    background-color: white;
+    border-radius: 10px;
     overflow: hidden;
-    margin-bottom: 8px;
-    background-color: #fff;
-    border-radius: 5px;
-    transition: box-shadow 83ms;
-    position: relative;
-    /* left: 218px; */
-    border: none;
-    box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
 `;
 
 const UserInfo = styled.div`
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-    padding:  12px 12px 16px;
-    word-wrap: break-word;
-    word-break: break-word;
+    position: relative;
+    margin-bottom: 30px;
+    font-size: large;
 `;
 
 const CardBackground = styled.div`
     background: url("/images/card-bg.svg");
-    background-position: center;
-    background-size: 462px;
-    height: 54px;
-    margin: -12px -12px 0;
+    height: 50px;
+    
+`;
+
+const Line = styled.hr`
+    border: 1px solid lightgray;
+    margin: 0px;
 `;
 
 const Photo = styled.div`
-    box-shadow: none;
     background-image: url("/images/photo.svg");
-    width: 72px;
-    height: 72px;
-    box-sizing: border-box;
-    background-clip: content-box;
-    background-color: white;
-    background-position: center;
-    background-size: 60%;
+    height: 70px;
+    width: 70px;
     background-repeat: no-repeat;
-    border: 2px solid white;
-    margin: -35px auto 12px;
+    background-position: center;
+    background-color: white;
     border-radius: 50%;
+    position: absolute;
+    left: calc(50% - 35px);
+    top: 20px;
 `;
 
 const Link = styled.div`
-    font-size: 16px;
-    line-height: 1.5;
-    color: rgba(0, 0, 0, 0.9);
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
     font-weight: 600;
 `;
 
 const AddPhotoText = styled.div`
-    color: #0a66c2;
-    margin-top: 4px;
-    font-size: 12px;
-    line-height: 1.33;
-    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    font-size: medium;
 `;
 
 const Widget = styled.div`
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-    padding-top: 12px;
-    padding-bottom: 12px;
-
-    & > a {
-        text-decoration: none;
+    font-size: medium;
+    &>a{
+        &>div{
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        &>p{
+            margin-right: 10px;
+        }
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        padding: 4px 12px;
-    }
-    &:hover{
-        background-color: rgba(0, 0, 0, 0.08);
-    }
-    div{
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        span {
-            font-size: 12px;
-            line-height: 1.333;
-            &:first-child{
-                color: rgba(0, 0, 0, 0.6);
-            }
-            &:nth-child(2){
-                color: rgba(0, 0, 0, 1);
-            }
+        &:hover{
+            background-color: lightgray;
         }
-    }
-    svg {
-        color: rgba(0, 0, 0, 1);
     }
 `;
 
-const Item = styled.a`
-    border-color: rgba(0, 0, 0, 0.8);
-    text-align: left;
-    padding: 12px;
-    font-size: 12px;
-    display: block;
-    span {
-        display: flex;
-        align-items: center;
-        color: rgba(0, 0, 0, 0.6);
-        svg {
-            color: rgba(0, 0, 0, 0.08);
-        }
+const Item = styled.div`
+    padding: 10px;
+    &>img{
+        opacity: 0.6;
     }
-    &:hover{
-        background-color: rgba(0, 0, 0, 0.08);
-    }
+   &>span{
+        margin-left: 10px;
+        opacity: 0.9;
+   }
+   &:hover{
+    background-color: lightgray;
+   }
 `;
 
 const CommunityCard = styled(ArtCard)`
-    padding: 8px 0 0;
-    text-align: left;
+    background-color: white;
     display: flex;
     flex-direction: column;
-    a {
-        color: black;
-        padding: 4px 12px 4px 12px;
-        font-size: 12px;
-
+    &>a{
+        padding: 3px;
+        margin-left: 10px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: space-between;
+        color: rgb(7, 158, 245);
         &:hover{
-            color: #0a66c2;
+            text-decoration: underline;
         }
-
-        span{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        &:last-child{
-            color: rgba(0, 0, 0, 0.6);
-            text-decoration: none;
-
-            border-top: 1px solid #d6cec2;
-            padding: 12px;
-            &:hover{
-                background-color: rgba(0, 0, 0, 0.08);
-            }
+    }
+    &>div{
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        &:hover{
+            background-color: lightgray;
         }
     }
 `;

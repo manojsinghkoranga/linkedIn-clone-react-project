@@ -74,8 +74,7 @@ const Rightside = (props) => {
 }
 
 const Container = styled.div`
-    grid-area: rightside;
-    margin-left: 0px;
+    
 `;
 
 const NewsFeeds = styled.div`
