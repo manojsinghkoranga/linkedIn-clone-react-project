@@ -114,7 +114,7 @@ const Container = styled.div`
       background-color: rgba(230, 230, 230, 0.8);
       border: none;
       border-radius: 15px;
-      border: 1px solid black;
+      border: 1px solid gray;
       font-size: medium;
     }
     &>img{

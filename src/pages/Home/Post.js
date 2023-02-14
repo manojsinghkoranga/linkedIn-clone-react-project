@@ -81,6 +81,7 @@ const Post = (props) => {
           <DeleteText>Delete</DeleteText>
         </ButtonContainer>
       )}
+      <Line />
       <SocialCounter>
         <LikesCounter>
           <button onClick={handleLike}> <ThumbUpAltOutlinedIcon /> {likeCount.length} likes</button>
@@ -183,6 +184,7 @@ const SocialCounter = styled.div`
   align-items: center;
   justify-content: space-around;
   background-color: white;
+  padding-bottom: 10px;
 `;
 
 const LikesCounter = styled.div`
@@ -231,6 +233,11 @@ const NewComment = styled.div`
   &>input{
     width: 80%;
   }
+`;
+
+const Line = styled.hr`
+  border: 1px solid gray;
+  width: 95%;
 `;
 
 

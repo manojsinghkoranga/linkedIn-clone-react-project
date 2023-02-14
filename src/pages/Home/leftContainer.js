@@ -72,6 +72,7 @@ const Leftside = (props) => {
 
 const Container = styled.div`
     display: flex;
+    /* position: fixed; */
     flex-direction: column;
     row-gap: 10px;
     width: 250px;

@@ -14,7 +14,6 @@ const Center = () => {
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-
     max-width: 550px;
     position: relative;
     row-gap: 15px;
@@ -23,6 +22,6 @@ const Container = styled.div`
 
 const Line = styled.hr`
     border: 1px solid rgb(144, 140, 140);
-    width: 100%;
+    width: 98%;
 `;
 export default Center;
