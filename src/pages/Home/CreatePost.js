@@ -9,6 +9,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import EventIcon from '@mui/icons-material/Event';
 import ArticleIcon from '@mui/icons-material/Article';
 import { getPostUrl, uploadPostImage } from "../../services/firebase/user-image";
+import { updateProfile } from "firebase/auth";
 
 const CreatePost = (props) => {
  
@@ -27,9 +28,13 @@ const CreatePost = (props) => {
 
   const onFormSubmit = async (event) => {
     event.preventDefault();
-    if (postInputValue === "" && userPostFile === null) {
+    if(postInputValue === "" && uploadPhoto === false){
       return;
     }
+    if(uploadPhoto === true && userPostFile.current.value === ""){
+      return;
+    }
+    
     const postNo = Math.random();
 
     if(uploadPhoto){
@@ -41,12 +46,11 @@ const CreatePost = (props) => {
         console.log(error);
       }
     }else{
-      console.log('false');
       dispatch(createPostAsync(postInputValue, 'null' , auth.userId));
     }
     setPostInputValue('');
     setUploadPhoto(false);
-    userPostFile = null;
+    userPostFile.current.value = null;
   };
 
   return (
@@ -67,7 +71,7 @@ const CreatePost = (props) => {
         </Button>
       </div>
       <FileInputBox >
-        {uploadPhoto && <input type={'file'}  onChange={event => userPostFile.current = event.target.files[0]}/>}
+        {uploadPhoto && <input type={'file'} ref={userPostFile} onChange={event => userPostFile.current = event.target.files[0]}/>}
       </FileInputBox>
       <IconContainer >
         <button onClick={() => setUploadPhoto(!uploadPhoto)}>
