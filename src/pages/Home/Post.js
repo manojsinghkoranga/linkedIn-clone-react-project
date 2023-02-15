@@ -9,7 +9,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import InsertCommentOutlinedIcon from '@mui/icons-material/InsertCommentOutlined';
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
-import { fontSize } from "@mui/system";
+import { Avatar } from "@mui/material";
 
 const Post = (props) => {
   const { body, id, imageUrl, createdBy, likes, comments } = props;
@@ -20,6 +20,7 @@ const Post = (props) => {
   const [postOwnerInfo, setPostOwnerInfo] = useState({
     firstName: "",
     lastName: "",
+    userImageUrl: "",
     id: null,
   });
 
@@ -64,13 +65,17 @@ const Post = (props) => {
 
   return (
     <PostContainer >
-      <OwnerName>
-        <p>
-          <Link to={`/user/${createdBy}`} style={{textDecoration: 'none'}}>
-            {postOwnerInfo.firstName}
-          </Link>
-        </p>
-      </OwnerName>
+      <PostOwnerDetails>
+        <Avatar alt="Remy Sharp" src={postOwnerInfo.userImageUrl} sx={{ width: 30, height: 30, mt: 1 }}/>
+        <OwnerName>
+          <p>
+            <Link to={`/user/${createdBy}`} style={{textDecoration: 'none'}}>
+              {postOwnerInfo.firstName}
+            </Link>
+          </p>
+        </OwnerName>
+      </PostOwnerDetails>
+      
       <BodyContainer>
         <p>{body}</p>
         {imageUrl !== 'null' && <img src={imageUrl} alt=""/>}
@@ -145,8 +150,7 @@ const BodyContainer = styled.div`
     align-self: baseline;
   }
   & > img{
-    height: 400px;
-    width: 400px;
+    max-width: 400px;
   }
 `;
 
@@ -160,6 +164,11 @@ const DeleteText = styled.p`
   padding: 5px;
   display: none;
   border-radius: 8px;
+`;
+
+const PostOwnerDetails = styled.div`
+  margin-left: 10px;
+  display: flex;
 `;
 
 const ButtonContainer = styled.div`

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { Avatar } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   const [userImage, setUserImage] = useState("/images/user.svg");
@@ -71,16 +72,18 @@ function NavBar() {
                         </NavList>
 
                         <User>
-                            <a>
-                              <Avatar
-                                alt="Remy Sharp"
-                                src={userImage}
-                                sx={{ width: 30, height: 30, mt: 1 }}
-                              />
+                            <span>
+                              <Link to={`/user/${auth.userId}`} style={{textDecoration: 'none'}}>
+                                <Avatar
+                                  alt="Remy Sharp"
+                                  src={userImage}
+                                  sx={{ width: 30, height: 30, mt: 1 }}
+                                />
+                              </Link>
                                 <span>Me
                                     <img src="/images/down-icon.svg" alt=""/>
                                 </span>
-                            </a>
+                            </span>
                             <Sign >
                                 <button onClick={onLogOutButtonClick}>
                                     Sign Out
@@ -212,7 +215,7 @@ const Sign = styled.div`
 const User = styled(NavList)`
   position: relative;
   align-items: center;
-  & > a {
+  & > span {
     & > Avatar{
       height: 30px;
       width: 30px;

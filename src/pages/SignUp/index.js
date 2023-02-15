@@ -58,10 +58,7 @@ const SignUp = () => {
 
     const user = await signUp(emailValue, passwordValue);
 
-    await addUser(user.user.uid, {
-      firstName: firstNameValue,
-      lastName: lastNameValue,
-    });
+    await addUser(user.user.uid, { firstName: firstNameValue, lastName: lastNameValue });
 
     navigate("/");
   };
