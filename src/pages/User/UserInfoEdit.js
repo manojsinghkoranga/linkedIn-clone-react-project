@@ -6,6 +6,7 @@ import { getUser, updateUser } from "../../services/firebase/user";
 import { DeleteOutline as DeleteOutlineIcon } from "@mui/icons-material";
 import NavBar from "../../shared/components/NavBar";
 import { getImageUrl, uploadImage } from "../../services/firebase/user-image";
+import styled from "styled-components";
 
 const UserInfoEdit = () => {
   const [firstName, setFirstName] = useState("");
@@ -30,12 +31,13 @@ const UserInfoEdit = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await uploadImage(userImageRef.current, userId);
-
-    const url = await getImageUrl(userId);
-    console.log(url);
-
-    await updateUser(userId, { firstName, lastName, userImageUrl: url });
+    if(userImageRef.current !== null){
+      await uploadImage(userImageRef.current, userId);
+      const url = await getImageUrl(userId);
+      await updateUser(userId, { firstName, lastName, userImageUrl: url });
+    }else{
+      await updateUser(userId, { firstName, lastName, userImageUrl: userImageUrl });
+    }
 
     navigate(-1);
   };
@@ -46,45 +48,44 @@ const UserInfoEdit = () => {
 
   return (
     <>
-      
-      <form onSubmit={handleSubmit}>
-        <Grid
-          container
-          flexDirection="column"
-          sx={{
-            mt: 4,
-          }}
-          alignItems="center"
-          spacing={2}
-        >
-          <Grid item>
-            <TextField
-              label="first name"
-              value={firstName}
-              required
-              onChange={(event) => setFirstName(event.target.value)}
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              label="last name"
-              value={lastName}
-              onChange={(event) => setLastName(event.target.value)}
-            />
-          </Grid>
-
-          <Grid item>
-            <TextField type="file" onChange={onFileChange} />
-          </Grid>
-          <Grid item>
-            <Button variant="contained" type="submit">
-              Submit
-            </Button>
-          </Grid>
-        </Grid>
-      </form>
+      <NavBar />
+      <Form onSubmit={handleSubmit}>
+        <div>
+          <TextField
+            label="first name"
+            value={firstName}
+            required
+            onChange={(event) => setFirstName(event.target.value)}
+          />
+        </div>
+        <div>
+          <TextField
+            label="last name"
+            value={lastName}
+            onChange={(event) => setLastName(event.target.value)}
+          />
+        </div>
+        <div>
+          <TextField type="file" onChange={onFileChange} />
+        </div>
+        <div>
+          <Button variant="contained" type="submit">
+            Submit
+          </Button>
+        </div>
+      </Form>
     </>
   );
 };
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & > div{
+    margin: 10px;
+  }
+`;
 
 export default UserInfoEdit;

@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { getUser } from "../../services/firebase/user";
 import { getImageUrl } from "../../services/firebase/user-image";
 import NavBar from "../../shared/components/NavBar";
+
   
 const User = () => {
   const [user, setUser] = useState({
@@ -39,10 +40,9 @@ const User = () => {
     fetchUserImage();
   }, [userId]);
 
-  console.log(userImageUrl);
-
   return (
     <>
+      <NavBar />
       <Grid container flexDirection="column" alignItems="center">
         <Grid item>
           <Avatar
@@ -53,13 +53,11 @@ const User = () => {
         </Grid>
         <Box sx={{ my: 2 }}>
           <Grid item>
-            <Typography variant="h6">First Name:</Typography>
-            <Typography>{user.firstName}</Typography>
+            <Typography variant="h6">First name:  {user.firstName}</Typography>
           </Grid>
 
           <Grid item>
-            <Typography variant="h6">Last Name:</Typography>
-            <Typography>{user.lastName}</Typography>
+            <Typography variant="h6">Last name: {user.lastName}</Typography>
           </Grid>
         </Box>
         {auth.userId === userId && (

@@ -126,7 +126,7 @@ const OwnerName = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
-  font-size: x-large;
+  font-size: large;
   background-color: white;
   & > p{
     margin-left: 15px;
@@ -142,7 +142,7 @@ const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: x-large;
+  font-size: large;
   background-color: white;
   & > p{
     margin-left: 15px;
@@ -150,7 +150,7 @@ const BodyContainer = styled.div`
     align-self: baseline;
   }
   & > img{
-    max-width: 400px;
+    max-width: 500px;
   }
 `;
 

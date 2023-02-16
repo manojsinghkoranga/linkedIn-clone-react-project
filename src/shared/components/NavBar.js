@@ -4,13 +4,20 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { Avatar } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
+import GroupIcon from '@mui/icons-material/Group';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import SmsIcon from '@mui/icons-material/Sms';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 function NavBar() {
   const [userImage, setUserImage] = useState("/images/user.svg");
   const auth = useSelector((state) => state.auth);
   const userInfo = useSelector((state) => state.userInfo);
 
+  const location = useLocation();
+  
   useEffect(() => {
     if(userInfo.imageUrl !== undefined){
       setUserImage(userInfo.imageUrl);
@@ -26,9 +33,9 @@ function NavBar() {
        <Container>
             <Content>
                 <Logo >
-                    <a href="/home">
-                        <img src="/images/home-logo.svg" alt="" />
-                    </a>
+                    <Link to={'/'}>
+                      <img src="/images/home-logo.svg" alt="" />
+                    </Link>
                 </Logo>
                 <Search>
                     <div>
@@ -40,35 +47,37 @@ function NavBar() {
                 </Search>
                 <Nav>
                     <NavListWrap>
-                        <NavList className="active">
-                            <a >
-                                <img src="/images/nav-home.svg" alt=""/>
+                        <NavList>
+                            <span >
+                                <Link to={'/'}>
+                                  <HomeIcon style={{color: location.pathname === '/' ? "black" : "gray", fontSize: "xx-large"}}/>
+                                </Link>
                                 <span>Home</span>
-                            </a>
+                            </span>
                         </NavList>
                         <NavList>
-                            <a >
-                                <img src="/images/nav-network.svg" alt=""/>
+                            <span >
+                                <GroupIcon style={{color: "gray", fontSize: "xx-large"}} />
                                 <span>My Networks</span>
-                            </a>
+                            </span>
                         </NavList>
                         <NavList>
-                            <a >
-                                <img src="/images/nav-jobs.svg" alt=""/>
+                            <span >
+                              <BusinessCenterIcon  style={{color: "gray", fontSize: "xx-large"}}/>
                                 <span>Jobs</span>
-                            </a>
+                            </span>
                         </NavList>
                         <NavList>
-                            <a >
-                                <img src="/images/nav-messaging.svg" alt=""/>
+                            <span >
+                                <SmsIcon style={{color: "gray", fontSize: "xx-large"}} />
                                 <span>Messaging</span>
-                            </a>
+                            </span>
                         </NavList>
                         <NavList>
-                            <a >
-                                <img src="/images/nav-notifications.svg" alt=""/>
+                            <span >
+                                <NotificationsIcon style={{color: "gray", fontSize: "xx-large"}}/>
                                 <span>Notifications</span>
-                            </a>
+                            </span>
                         </NavList>
 
                         <User>
@@ -176,15 +185,11 @@ const NavListWrap = styled.div`
 `;
 const NavList= styled.div`
   margin-left: 40px;
-  & > a {
+  & > span {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    & > img{
-      height: 30px;
-      width: 30px;
-    }
     & > span{
       font-size: smaller;
     }
