@@ -100,14 +100,13 @@ function NavBar() {
                             </Sign>
                         </User>
                         <Work>
-                            <a>
+                            <span>
                                 <img src="/images/nav-work.svg" alt=""/>
                                 <span>
                                     work
                                     <img src="/images/down-icon.svg" alt="" />
                                 </span>
-                            </a>
-
+                            </span>
                         </Work>
 
                     </NavListWrap>

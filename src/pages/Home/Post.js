@@ -8,7 +8,6 @@ import styled from "styled-components";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import InsertCommentOutlinedIcon from '@mui/icons-material/InsertCommentOutlined';
-import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
 import { Avatar } from "@mui/material";
 
 const Post = (props) => {
@@ -39,7 +38,7 @@ const Post = (props) => {
 
   useEffect(() => {
     updatePost(id, {body, imageUrl, createdBy, likes: likeCount, comments: commentsCounter});
-  }, [likeCount, commentsCounter])
+  }, [likeCount, commentsCounter, id, body, imageUrl, createdBy])
 
   const handleLike = () => {
     if(likeCount.includes(auth.userId)){
@@ -55,7 +54,7 @@ const Post = (props) => {
   }
 
   const addCommentOnPost = () => {
-    setCommentsCounter([...commentsCounter, {name: userInfo.firstName, body: postComment}]);
+    setCommentsCounter([...commentsCounter, {name: userInfo.firstName, body: postComment, imageUrl: userInfo.imageUrl}]);
     setPostComment('');
   }
 
@@ -97,12 +96,19 @@ const Post = (props) => {
       </SocialCounter>
       {openComments && <CommentSection >
         <NewComment>
-          <input value={postComment} onChange={(event) => setPostComment(event.target.value)}/> <button onClick={addCommentOnPost}>Post</button>
+          <input value={postComment} onChange={(event) => setPostComment(event.target.value)}/> 
+          <button onClick={addCommentOnPost}>Post</button>
         </NewComment>
         {commentsCounter.map((comment) => {
-            return <li>
-                <header>{comment.name}</header>
-                <p> <SubdirectoryArrowRightIcon sx={{fontSize: "15px"}}/> {comment.body}</p>
+            return <li key={comment.name}>
+                <span>
+                  <Avatar alt="Remy Sharp" src={comment.imageUrl} sx={{ width: 20, height: 20, mt: 1 }}/>
+                </span>
+                <div>
+                  <header>{comment.name}</header>
+                  <p>{comment.body}</p>
+                </div>
+                
             </li>
         }
         )}
@@ -216,29 +222,44 @@ const CommentsCounter = styled.div`
 
 const CommentSection = styled.div`
   list-style-type: none;
-  
+  margin-bottom: 10px;
   &>li{
     margin-left: 20px;
-    &>header{
-      margin-top: 5px;
-      font-size: large;
-      font-weight: 400;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    &>span{
+      align-self: flex-start;
     }
-    &>P{
-      margin-top: 2px;
-      margin-left: 30px;
-      font-size: medium;
+    &>div{
       display: flex;
+      flex-direction: column;
       align-items: center;
+      background-color: rgba(224, 224, 224, 0.8);
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 100%;
+      align-items: baseline;
+      &>header{
+        margin: 2px;
+        color: gray;
+        &:hover{
+          color: blue;
+        }
+      }
+      &>p{
+        margin: 2px;
+      }
     }
   }
 `;
 
 const NewComment = styled.div`
-  margin-top: 15px;
+  margin: 0px 10px;
+  padding: 10px;
   display: flex;
   justify-content: space-evenly;
-  background-color: white;
+  background-color: rgba(224, 224, 224, 0.8);
   &>input{
     width: 80%;
   }
