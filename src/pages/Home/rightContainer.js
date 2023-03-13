@@ -108,6 +108,9 @@ const NewsFeeds = styled.div`
             }
         }
     }
+    @media(max-width: 480px){
+        
+    }
     
     
 `;
@@ -146,6 +149,9 @@ const AboutSection = styled.div`
             text-decoration: underline;
         }
     }
+    @media(max-width: 480px){
+        
+    }
 `;
 
 const CopyRight = styled.div`
@@ -155,6 +161,9 @@ const CopyRight = styled.div`
     margin-left: 30px;
     & > img{
         height: 50px;
+    }
+    @media(max-width: 480px){
+        
     }
 `;
 

@@ -118,7 +118,9 @@ function NavBar() {
 }
 
 const Container = styled.div`
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   height: 60px;
   display: flex;
   background-color: white;

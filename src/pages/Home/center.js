@@ -17,6 +17,9 @@ const Container = styled.div`
     max-width: 550px;
     position: relative;
     row-gap: 15px;
+    @media(max-width: 480px){
+        
+    }
     
 `;
 

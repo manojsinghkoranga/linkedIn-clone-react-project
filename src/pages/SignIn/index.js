@@ -56,46 +56,51 @@ const SignIn = () => {
   return (
     <>
       <Navigation />
-      <SignInContainer>
-          <form onSubmit={handleSubmit}>
-            <TextField
-              label="email"
-              variant="standard"
-              fullWidth
-              error={error.email !== ""}
-              helperText={error.email}
-              value={emailValue}
-              onChange={(event) => setEmailValue(event.target.value)}
-            />
-            <TextField
-              label="password"
-              type="password"
-              variant="standard"
-              fullWidth
-              error={error.password !== ""}
-              helperText={error.password}
-              value={passwordValue}
-              onChange={(event) => setPasswordValue(event.target.value)}
-            />
-            <Button variant="contained" type="submit">
-              Sign in
-            </Button>
-          </form>
-          <Typography variant="subtitle1" paragraph={true} sx={{ mt: 2 }}>
-            Don't have an account? <Link to="/sign-up">Sign up</Link>
-          </Typography>
-      </SignInContainer>
-      
+      <Container >
+        <SignInContainer>
+            <form onSubmit={handleSubmit}>
+              <TextField
+                label="email"
+                variant="standard"
+                fullWidth
+                error={error.email !== ""}
+                helperText={error.email}
+                value={emailValue}
+                onChange={(event) => setEmailValue(event.target.value)}
+              />
+              <TextField
+                label="password"
+                type="password"
+                variant="standard"
+                fullWidth
+                error={error.password !== ""}
+                helperText={error.password}
+                value={passwordValue}
+                onChange={(event) => setPasswordValue(event.target.value)}
+              />
+              <Button variant="contained" type="submit">
+                Sign in
+              </Button>
+            </form>
+            <Typography variant="subtitle1" paragraph={true} sx={{ mt: 2 }}>
+              Don't have an account? <Link to="/sign-up">Sign up</Link>
+            </Typography>
+        </SignInContainer>
+      </Container>
     </>
   );
 };
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const SignInContainer = styled.div`
   width: 400px;
   height: auto;
-  position: relative;
   margin-top: 50px;
-  left: calc(50% - 200px);
   box-shadow: 5px 5px 5px 5px lightgray;
   background-color: rgb(240, 240, 240);
   display: flex;
@@ -107,6 +112,10 @@ const SignInContainer = styled.div`
     flex-direction: column;
     gap: 15px;
     width: 80%;
+  }
+  @media(max-width: 480px){
+    margin: 10px auto;
+    width: 90%;
   }
 `;
 

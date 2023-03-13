@@ -72,10 +72,13 @@ const Leftside = (props) => {
 
 const Container = styled.div`
     display: flex;
-    /* position: fixed; */
     flex-direction: column;
     row-gap: 10px;
     width: 250px;
+    @media(max-width: 678px){
+        margin-left: 30px;
+        width: 90%;
+    }
 `;
 
 const ArtCard = styled.div`

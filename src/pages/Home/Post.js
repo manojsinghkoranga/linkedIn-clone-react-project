@@ -126,6 +126,9 @@ const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: white;
+  @media(max-width:480px){
+    max-width: 430px;
+  }
 `;
 
 const OwnerName = styled.div`
@@ -156,7 +159,8 @@ const BodyContainer = styled.div`
     align-self: baseline;
   }
   & > img{
-    max-width: 500px;
+    width: 95%;
+    object-fit: contain;
   }
 `;
 

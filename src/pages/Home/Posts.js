@@ -29,6 +29,7 @@ const PostsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   row-gap: 15px;
+  
 `;
 
 const PostDiv = styled.div`

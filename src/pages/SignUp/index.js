@@ -1,4 +1,4 @@
-import { Button, Container, Grid, TextField, Typography } from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -66,64 +66,70 @@ const SignUp = () => {
   return (
     <>
       <Navigation />
-      <SignUpContainer>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            label="first name"
-            variant="standard"
-            fullWidth
-            required
-            value={firstNameValue}
-            onChange={(event) => setFirstNameValue(event.target.value)}
-          />
-          <TextField
-            label="last name"
-            variant="standard"
-            fullWidth
-            value={lastNameValue}
-            onChange={(event) => setLastNameValue(event.target.value)}
-          />
-          <TextField
-            label="email"
-            variant="standard"
-            fullWidth
-            required
-            error={error.email !== ""}
-            helperText={error.email}
-            value={emailValue}
-            onChange={(event) => setEmailValue(event.target.value)}
-          />
-          <TextField
-            label="password"
-            type="password"
-            variant="standard"
-            fullWidth
-            required
-            error={error.password !== ""}
-            helperText={error.password}
-            value={passwordValue}
-            onChange={(event) => setPasswordValue(event.target.value)}
-          />
-          <Button variant="contained" type="submit">
-            Sign up
-          </Button>
-  
-        </form>
-        <Typography variant="subtitle1" paragraph={true} sx={{ mt: 2 }}>
-          Already have an account? <Link to="/sign-in">Sign in</Link>
-        </Typography>
+      <OuterDiv >
+        <SignUpContainer>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              label="first name"
+              variant="standard"
+              fullWidth
+              required
+              value={firstNameValue}
+              onChange={(event) => setFirstNameValue(event.target.value)}
+            />
+            <TextField
+              label="last name"
+              variant="standard"
+              fullWidth
+              value={lastNameValue}
+              onChange={(event) => setLastNameValue(event.target.value)}
+            />
+            <TextField
+              label="email"
+              variant="standard"
+              fullWidth
+              required
+              error={error.email !== ""}
+              helperText={error.email}
+              value={emailValue}
+              onChange={(event) => setEmailValue(event.target.value)}
+            />
+            <TextField
+              label="password"
+              type="password"
+              variant="standard"
+              fullWidth
+              required
+              error={error.password !== ""}
+              helperText={error.password}
+              value={passwordValue}
+              onChange={(event) => setPasswordValue(event.target.value)}
+            />
+            <Button variant="contained" type="submit">
+              Sign up
+            </Button>
+    
+          </form>
+          <Typography variant="subtitle1" paragraph={true} sx={{ mt: 2 }}>
+            Already have an account? <Link to="/sign-in">Sign in</Link>
+          </Typography>
 
-      </SignUpContainer>
+        </SignUpContainer>
+      </OuterDiv>
     </>
   );
 };
 
+const OuterDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const SignUpContainer = styled.div`
   width: 400px;
   height: auto;
-  position: relative;
   margin-top: 50px;
-  left: calc(50% - 200px);
   box-shadow: 5px 5px 5px 5px lightgray;
   background-color: rgb(240, 240, 240);
   display: flex;
@@ -135,6 +141,10 @@ const SignUpContainer = styled.div`
     flex-direction: column;
     gap: 15px;
     width: 80%;
+  }
+  @media(max-width: 480px){
+    margin: 10px auto;
+    width: 90%;
   }
 `;
 

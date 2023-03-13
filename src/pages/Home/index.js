@@ -22,7 +22,7 @@ function Home() {
 }
 
 const Container = styled.div`
-  max-width: 100%;
+  
 `;
 
 const Layout = styled.div`
@@ -30,6 +30,10 @@ const Layout = styled.div`
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
+  @media(max-width: 678px){
+    flex-wrap: wrap;
+    max-width: 90%;
+  }
 `;
 
 export default Home;
