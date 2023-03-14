@@ -10,13 +10,13 @@ function Home() {
   return (
     <>
       <NavBar />
-      <Container>
+      {/* <Container> */}
         <Layout>
           <Leftside />
           <Center />
           <Rightside />
         </Layout>
-      </Container>
+      {/* </Container> */}
     </>
   );
 }
@@ -26,14 +26,11 @@ const Container = styled.div`
 `;
 
 const Layout = styled.div`
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: 20px;
-  @media(max-width: 678px){
-    flex-wrap: wrap;
-    max-width: 90%;
-  }
+  flex-wrap: wrap;
 `;
 
 export default Home;

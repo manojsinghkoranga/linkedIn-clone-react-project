@@ -74,12 +74,23 @@ const Rightside = (props) => {
 }
 
 const Container = styled.div`
-    
+    width: 275px;
+    @media(max-width: 992px){
+        margin-left: 246px;
+        width: 450px;
+    }
+    @media(max-width: 695px){
+        width:  450px;
+        margin-left: 0px;
+    }
+    @media(max-width: 480px){
+        width: 95%;
+    }
 `;
 
 const NewsFeeds = styled.div`
     padding-top: 15px;
-    width: 300px;
+    width: 100%;
     background-color: white;
     border-radius: 5px;
     & > header{
@@ -107,12 +118,7 @@ const NewsFeeds = styled.div`
                 }
             }
         }
-    }
-    @media(max-width: 480px){
-        
-    }
-    
-    
+    } 
 `;
 
 const ShowMore = styled.div`
@@ -130,18 +136,17 @@ const ShowMore = styled.div`
 `;
 
 const AboutSection = styled.div`
-    margin-left: 50px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    row-gap: 10px;
+    column-gap: 10px;
     justify-content: center;
-    width: 200px;
     font-size: small;
     font-weight: 400;
     margin-top: 30px;
     color: gray;
     & > div{
-        margin: 5px;
         display: flex;
         align-items: center;
         &:hover{
@@ -149,21 +154,15 @@ const AboutSection = styled.div`
             text-decoration: underline;
         }
     }
-    @media(max-width: 480px){
-        
-    }
 `;
 
 const CopyRight = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: small;
-    margin-left: 30px;
     & > img{
         height: 50px;
-    }
-    @media(max-width: 480px){
-        
     }
 `;
 

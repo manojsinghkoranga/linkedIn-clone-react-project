@@ -59,7 +59,7 @@ const CreatePost = (props) => {
         <Avatar
           alt="Remy Sharp"
           src={userImageUrl}
-          sx={{ width: 48, height: 48, mt: 1 }}
+          sx={{ width: 36, height: 36, mt: 1 }}
         />
         <input
           placeholder="Start a post..."
@@ -106,30 +106,25 @@ const Container = styled.div`
   border-radius: 10px;
 
   &>div{
+    width: 100%;
     margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     &>input{
-      margin-left: 15px;
-      margin-right: 15px;
       height: 50px;
-      width: 350px;
+      width: 60%;
       background-color: rgba(230, 230, 230, 0.8);
       border: none;
       border-radius: 15px;
       border: 1px solid gray;
       font-size: medium;
     }
-    &>img{
-      height: 40px;
-      border-radius: 50%;
-    }
   }
 `;
 
 const FileInputBox = styled.div`
-  margin-right: 20px;
+  align-self: center;
 `;
 
 const IconContainer = styled.div`
@@ -145,9 +140,14 @@ const IconContainer = styled.div`
     align-items: center;
     background-color: transparent;
     justify-content: center;
-    font-size: medium;
+    font-size: small;
     &:hover{
       opacity: 0.9;
+    }
+  }
+  @media(max-width: 330px){
+    & > button{
+      font-size : x-small;
     }
   }
 

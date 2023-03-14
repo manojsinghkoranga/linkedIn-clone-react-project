@@ -9,8 +9,6 @@ const Leftside = (props) => {
         setUserName(userInfo.firstName); 
     }, [userInfo]);
     
-
-
     return (
         <Container>
             <ArtCard >
@@ -74,11 +72,14 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    width: 250px;
-    @media(max-width: 678px){
-        margin-left: 30px;
-        width: 90%;
+    width: 225px;
+    @media(max-width: 695px){
+        width: 450px;
     }
+    @media(max-width: 480px){
+        width: 95%;
+    }
+
 `;
 
 const ArtCard = styled.div`
@@ -96,7 +97,6 @@ const UserInfo = styled.div`
 const CardBackground = styled.div`
     background: url("/images/card-bg.svg");
     height: 50px;
-    
 `;
 
 const Line = styled.hr`

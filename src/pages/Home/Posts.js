@@ -24,7 +24,7 @@ const Posts = () => {
 };
 
 const PostsContainer = styled.div`
-  width: 550px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

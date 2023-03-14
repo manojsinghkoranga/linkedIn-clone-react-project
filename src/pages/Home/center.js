@@ -14,13 +14,15 @@ const Center = () => {
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 550px;
+    max-width: 450px;
     position: relative;
     row-gap: 15px;
-    @media(max-width: 480px){
-        
+    @media(max-width: 678px){
+        width: 90%;
     }
-    
+    @media(max-width: 480px){
+        width: 95%;
+    }
 `;
 
 const Line = styled.hr`

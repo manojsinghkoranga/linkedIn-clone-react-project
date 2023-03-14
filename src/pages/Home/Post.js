@@ -121,14 +121,12 @@ const PostContainer = styled.div`
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  width: 550px;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   background-color: white;
-  @media(max-width:480px){
-    max-width: 430px;
-  }
+  
 `;
 
 const OwnerName = styled.div`
