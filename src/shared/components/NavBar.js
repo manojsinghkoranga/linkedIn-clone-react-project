@@ -10,8 +10,10 @@ import GroupIcon from '@mui/icons-material/Group';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import SmsIcon from '@mui/icons-material/Sms';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import MenuIcon from '@mui/icons-material/Menu';
 
 function NavBar() {
+  const [showVerticalIcons, setShowVerticalIcons] = useState(false);
   const [userImage, setUserImage] = useState("/images/user.svg");
   const auth = useSelector((state) => state.auth);
   const userInfo = useSelector((state) => state.userInfo);
@@ -31,20 +33,21 @@ function NavBar() {
   return (
     <>
        <Container>
-            <Content>
-                <Logo >
-                    <Link to={'/'}>
-                      <img src="/images/home-logo.svg" alt="" />
-                    </Link>
-                </Logo>
-                <Search>
-                    <div>
-                        <input type={'text'} placeholder={'Search'} />
-                    </div>
-                    <SearchIcon>
-                        <img src="/images/search-icon.svg" alt="" />
-                    </SearchIcon>
-                </Search>
+                <Content>
+                    <Logo >
+                        <Link to={'/'}>
+                          <img src="/images/home-logo.svg" alt="" />
+                        </Link>
+                    </Logo>
+                    <Search>
+                        <div>
+                            <input type={'text'} placeholder={'Search'} />
+                        </div>
+                        <SearchIcon>
+                            <img src="/images/search-icon.svg" alt="" />
+                        </SearchIcon>
+                    </Search>
+                </Content>
                 <Nav>
                     <NavListWrap>
                         <NavList>
@@ -108,11 +111,76 @@ function NavBar() {
                                 </span>
                             </span>
                         </Work>
-
                     </NavListWrap>
                 </Nav>
-            </Content>
+                <VerticalNavBar>
+                      <button onClick={() => setShowVerticalIcons(!showVerticalIcons)}><MenuIcon /></button>
+                </VerticalNavBar>
         </Container>
+
+        {showVerticalIcons && <ListItem>
+                          <NavList>
+                              <span >
+                                  <Link to={'/'}>
+                                    <HomeIcon style={{color: location.pathname === '/' ? "black" : "gray", fontSize: "xx-large"}}/>
+                                  </Link>
+                                  <span>Home</span>
+                              </span>
+                          </NavList>
+                          <NavList>
+                              <span >
+                                  <GroupIcon style={{color: "gray", fontSize: "xx-large"}} />
+                                  <span>My Networks</span>
+                              </span>
+                          </NavList>
+                          <NavList>
+                              <span >
+                                <BusinessCenterIcon  style={{color: "gray", fontSize: "xx-large"}}/>
+                                  <span>Jobs</span>
+                              </span>
+                          </NavList>
+                          <NavList>
+                              <span >
+                                  <SmsIcon style={{color: "gray", fontSize: "xx-large"}} />
+                                  <span>Messaging</span>
+                              </span>
+                          </NavList>
+                          <NavList>
+                              <span >
+                                  <NotificationsIcon style={{color: "gray", fontSize: "xx-large"}}/>
+                                  <span>Notifications</span>
+                              </span>
+                          </NavList>
+
+                          <User>
+                              <span>
+                                <Link to={`/user/${auth.userId}`} style={{textDecoration: 'none'}}>
+                                  <Avatar
+                                    alt="Remy Sharp"
+                                    src={userImage}
+                                    sx={{ width: 30, height: 30, mt: 1 }}
+                                  />
+                                </Link>
+                                  <span>Me
+                                      <img src="/images/down-icon.svg" alt=""/>
+                                  </span>
+                              </span>
+                              <Sign >
+                                  <button onClick={onLogOutButtonClick}>
+                                      Sign Out
+                                  </button>
+                              </Sign>
+                          </User>
+                          <Work>
+                              <span>
+                                  <img src="/images/nav-work.svg" alt=""/>
+                                  <span>
+                                      work
+                                      <img src="/images/down-icon.svg" alt="" />
+                                  </span>
+                              </span>
+                          </Work>
+                        </ListItem>}
     </>
   );
 }
@@ -121,21 +189,21 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   z-index: 1;
-  height: 60px;
-  display: flex;
   background-color: white;
+  display: flex;
   align-items: center;
-  flex-direction: row;
-  width: 100vw;
+  justify-content: space-evenly;
+  padding: 5px 20px;
+  @media(max-width: 788px){
+    justify-content: space-between;
+  }
 `;
 
 const Content = styled.div`
-  margin: 0px 40px 0px 40px;
   display: flex;
   align-items: center;
-  @media(max-width: 900px){
-    margin-left: 20px;
-  }
+  justify-content: center;
+  
 `;
 
 const Logo = styled.span`
@@ -156,26 +224,31 @@ const Search = styled.div`
     border: none;
     height: 30px;
   }
-  @media(max-width: 800px){
-    width: 200px;
-  }
+  
 `;
 
 const SearchIcon = styled.div`
   position: absolute;
   left: 20px;
   opacity: 0.6;
-  @media(max-width: 800px){
-    display: none;
-  }
+  
 `;
 
 const Nav = styled.nav`
-  position: absolute;
-  right: 60px;
-  @media(max-width: 900px){
-    right: 20px;
-  }
+  @media(max-width: 788px){
+      display: none;
+    }
+`;
+
+const VerticalNavBar = styled.div`
+    display: none;
+    &>button{
+      border: none;
+    }
+    @media(max-width: 788px){
+      display: flex;
+      flex-direction: column;
+    }
 `;
 
 const NavListWrap = styled.div`
@@ -185,7 +258,7 @@ const NavListWrap = styled.div`
   
 `;
 const NavList= styled.div`
-  margin-left: 40px;
+  margin: 10px;
   & > span {
     display: flex;
     flex-direction: column;
@@ -198,12 +271,16 @@ const NavList= styled.div`
   &:hover{
     opacity: 0.9;
   }
-  @media(max-width: 1000px){
-    margin-left: 20px;
-  }
-  @media(max-width: 768px){
-    display: none;
-  }
+  
+`;
+
+const ListItem = styled.div`
+  position: absolute;
+  z-index: 2;
+  top: 50px;
+  right: 0px;
+  width: 100px;
+  background-color: white;
 `;
 
 const Sign = styled.div`
@@ -237,17 +314,11 @@ const User = styled(NavList)`
       display: flex;
     }
   }
-  @media(max-width: 768px){
-    display: flex;
-    position: absolute;
-    right: 30px;
-  }
+  
   
 `;
 const Work = styled(User)`
-  @media(max-width: 768px){
-    display: none;
-  }
+  
 `;
 
 export default NavBar;

@@ -11,18 +11,19 @@ const Leftside = (props) => {
     
     return (
         <Container>
-            <ArtCard >
+            <UploadImage>
                 <UserInfo >
-                    <CardBackground />
-                    <a>
-                        <Photo />
-                        <Link>Welcome {userName}</Link>
-                    </a>
-                    <a>
-                        <AddPhotoText>Add a photo</AddPhotoText>
-                    </a>
-                </UserInfo>
-                <Line />
+                        <CardBackground />
+                        <a>
+                            <Photo />
+                            <Link>Welcome {userName}</Link>
+                        </a>
+                        <a>
+                            <AddPhotoText>Add a photo</AddPhotoText>
+                        </a>
+                    </UserInfo>
+            </UploadImage>
+            <ArtCard >
                 <Widget>
                     <a>
                         <div>
@@ -82,10 +83,19 @@ const Container = styled.div`
 
 `;
 
+const UploadImage = styled.div`
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+`;
+
 const ArtCard = styled.div`
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
+    @media(max-width: 695px){
+        display: none;
+    }
 `;
 
 const UserInfo = styled.div`
@@ -186,6 +196,9 @@ const CommunityCard = styled(ArtCard)`
         &:hover{
             background-color: lightgray;
         }
+    }
+    @media(max-width: 695px){
+        display: none;
     }
 `;
 

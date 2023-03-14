@@ -10,20 +10,14 @@ function Home() {
   return (
     <>
       <NavBar />
-      {/* <Container> */}
         <Layout>
           <Leftside />
           <Center />
           <Rightside />
         </Layout>
-      {/* </Container> */}
     </>
   );
 }
-
-const Container = styled.div`
-  
-`;
 
 const Layout = styled.div`
   margin-top: 10px;

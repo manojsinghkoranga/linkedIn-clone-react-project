@@ -14,9 +14,12 @@ const Center = () => {
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 450px;
+    width: 550px;
     position: relative;
     row-gap: 15px;
+    @media(max-width: 1140px){
+        width: 450px;
+    }
     @media(max-width: 678px){
         width: 90%;
     }
