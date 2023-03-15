@@ -53,7 +53,7 @@ function NavBar() {
                         <NavList>
                             <span >
                                 <Link to={'/'}>
-                                  <HomeIcon style={{color: location.pathname === '/' ? "black" : "gray", fontSize: "xx-large"}}/>
+                                  <HomeIcon style={{color: location.pathname === '/' ? "black" : "gray", fontSize: "xx-large"}}/>         
                                 </Link>
                                 <span>Home</span>
                             </span>
@@ -194,6 +194,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-evenly;
   padding: 5px 20px;
+  
   @media(max-width: 788px){
     justify-content: space-between;
   }
@@ -224,6 +225,13 @@ const Search = styled.div`
     border: none;
     height: 30px;
   }
+  @media(max-width: 400px){
+    height: 36px;
+    width: 125px;
+    &>div>input{
+      width: 100px;
+    }
+  }
   
 `;
 
@@ -231,10 +239,22 @@ const SearchIcon = styled.div`
   position: absolute;
   left: 20px;
   opacity: 0.6;
+  @media(max-width: 400px){
+    display: none;
+  }
   
 `;
 
 const Nav = styled.nav`
+  @media(max-width: 2000px){
+    margin-left: 200px;
+  }
+  @media(max-width: 1024px){
+    margin-left: 100px;
+  }
+  @media(max-width: 930px){
+    margin-left: 0px;
+  }
   @media(max-width: 788px){
       display: none;
     }
@@ -255,7 +275,7 @@ const NavListWrap = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  
+  text-align: center;
 `;
 const NavList= styled.div`
   margin: 10px;

@@ -56,11 +56,14 @@ const CreatePost = (props) => {
   return (
     <Container>
       <div>
-        <Avatar
-          alt="Remy Sharp"
-          src={userImageUrl}
-          sx={{ width: 36, height: 36, mt: 1 }}
-        />
+        <ProfileImage>
+          <Avatar
+            alt="Remy Sharp"
+            src={userImageUrl}
+            sx={{ width: 36, height: 36, mt: 1 }}
+          />
+        </ProfileImage>
+        
         <input
           placeholder="Start a post..."
           value={postInputValue}
@@ -120,6 +123,12 @@ const Container = styled.div`
       border: 1px solid gray;
       font-size: medium;
     }
+  }
+`;
+
+const ProfileImage = styled.div`
+  @media(max-width: 325px){
+    display: none;
   }
 `;
 
